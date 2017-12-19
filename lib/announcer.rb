@@ -1,11 +1,21 @@
 require_relative 'player'
+require 'colorize'
 
 
 class Announcer
-  attr_reader :player_names, :player1, :player2
+  attr_reader :player_names, :player1, :player2, :current_player
 
   def initialize
     @player_names = []
+  end
+
+  def try_again
+    puts "Make a proper move! (numbers 0-6)"
+  end
+
+  def elicit_move
+    puts "\n\nWhat's your move, #{@current_player.name}?"
+    gets.chomp
   end
 
   def set_current_player
@@ -21,8 +31,8 @@ class Announcer
   end
 
   def explain_rules
-    puts "This is the board. You choose a column, and the game places your marker at the top."
-    puts "The winner is the first person to get four in a row."
+    puts "This is the board. Type a number to choose which column to place your marker in."
+    puts "The winner is the first person to get four in a row.\n\n"
     puts "To start, I need your names."
   end
 
@@ -32,12 +42,36 @@ class Announcer
   end
 
   def create_players
-    @player1 = Player.new(@player_names[0], "O")
-    @player2 = Player.new(@player_names[1], "X")
+    @player1 = Player.new(@player_names[0], "X")
+    @player2 = Player.new(@player_names[1], "O")
   end
 
-  def elicit_turn
-    puts "OK, it's your move #{current_player}"
+  def victory
+    puts "Well done! You won #{current_player.name}!"
+  end
+
+  def play_again?
+    puts "Do you want to play again? (y/n)"
+    answer = gets.chomp.downcase
+    answer == "y" ? true : false
+  end
+
+  def goodbye
+    puts "See you next time!"
+    exit
+  end
+
+  def title
+    puts "
+
+     _______  _______  __    _  __    _  _______  _______  _______        _   ___
+    |       ||       ||  |  | ||  |  | ||       ||       ||       |      | | |   |
+    |       ||   _   ||   |_| ||   |_| ||    ___||       ||_     _|      | |_|   |
+    |       ||  | |  ||       ||       ||   |___ |       |  |   |        |       |
+    |      _||  |_|  ||  _    ||  _    ||    ___||      _|  |   |        |___    |
+    |     |_ |       || | |   || | |   ||   |___ |     |_   |   |            |   |
+    |_______||_______||_|  |__||_|  |__||_______||_______|  |___|            |___|"
+
   end
 
 
