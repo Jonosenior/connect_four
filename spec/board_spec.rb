@@ -73,18 +73,23 @@ describe Board do
       end
     end
 
-    describe '#update_columns' do
-      it 'updates all 7 cols' do
+    describe '#columns' do
+      before do
         board.update_columns
+      end
+      it 'returns all 7 cols' do
         expect(board.columns.length).to eq(7)
       end
 
       it 'returns 6 elements per column' do
-        expect(board.columns[0].length).to eq(6)
+        expect(board.columns[1].length).to eq(6)
       end
     end
 
     describe '#rows' do
+      before do
+        board.update_rows
+      end
       it 'returns all 6 rows' do
         expect(board.rows.length).to eq(6)
       end
@@ -93,8 +98,6 @@ describe Board do
         expect(board.rows[5].length).to eq(7)
       end
     end
-
-
 
     describe '#four_in_a_row?' do
       context 'passed a winning row' do

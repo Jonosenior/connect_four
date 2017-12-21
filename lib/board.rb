@@ -119,11 +119,14 @@ class Board
 
 end
 
-# @board = Board.new
-# @board.visualise
-# (0..5).each do |col|
-#   6.times {@board.place_move(col, "X")}
-# end
+ # @board = Board.new
+ # @board.visualise
+ # (0..5).each do |col|
+ #   6.times {@board.place_move(col, "X")}
+ # end
+ # @board.visualise
+ # puts @board.update_columns
+ # puts @board.columns[6].length
 # # 6.times {@board.place_move(5,"O")}
 # @board.visualise
 # @board.update_rows
