@@ -25,10 +25,10 @@ class Board
 
 
   def place_move(col, marker)
-    @contents[next_empty_row(col)][col].value=(marker)
+    @contents[lowest_empty_row(col)][col].value=(marker)
   end
 
-  def next_empty_row(col)
+  def lowest_empty_row(col)
     (0..5).to_a.reverse.each do |row|
       return row if @contents[row][col].value == " "
     end

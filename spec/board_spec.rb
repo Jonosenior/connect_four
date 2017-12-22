@@ -40,13 +40,13 @@ describe Board do
     end
   end
 
-  describe '#next_empty_row' do
+  describe '#lowest_empty_row' do
     context 'given a column containing one marker' do
       before do
         board.place_move(3, "X")
       end
       it 'returns row 4' do
-        expect(board.next_empty_row(3)).to eq(4)
+        expect(board.lowest_empty_row(3)).to eq(4)
       end
     end
   end
