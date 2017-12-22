@@ -29,10 +29,10 @@ def new_turn
 end
 
 def analyse_turn
-  @board.update_rows
-  @board.update_columns
-  @board.update_diagonals
-  @board.update_lines_to_check
+  # @board.update_rows
+  # @board.update_columns
+  # @board.update_diagonals
+  # @board.update_lines_to_check
   game_over if @board.win? || @board.tie?
 end
 
