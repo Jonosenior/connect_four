@@ -35,7 +35,7 @@ class Board
   end
 
   def legal_move?(column)
-    column = convert_to_integer(column) rescue false
+    column = Integer column #rescue false
     return false if !column_exists?(column)
     return false if !contains_empty_cell?(column)
     true
@@ -49,6 +49,7 @@ class Board
 
   def column_exists?(column)
     return false if !(0..6).include?(column)
+    true
   end
 
   def convert_to_integer(input)
