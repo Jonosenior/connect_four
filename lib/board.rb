@@ -2,7 +2,7 @@ require_relative 'cell'
 
 
 class Board
-  attr_reader :contents, :rows, :columns, :diagonals
+  attr_reader :contents, :rows, :columns, :diagonals, :lines_to_check
 
   def initialize
     @contents = Array.new(6){Array.new(7) {Cell.new}}
@@ -73,35 +73,33 @@ class Board
   end
 
   def win?
-    @lines_to_check.each { |line| return true if four_in_a_row?(line) }
+    lines_to_check.each { |line| return true if four_in_a_row?(line) }
     false
   end
 
   def tie?
-    @lines_to_check.each { |line| return false if line.any? {|cell| cell.value == ' '} }
+    lines_to_check.each { |line| return false if line.any? {|cell| cell.value == ' '} }
     true
   end
 
-  def update_lines_to_check
-    @lines_to_check = @rows + @columns + @diagonals
+  def lines_to_check
+    rows + columns + diagonals
   end
 
-  def update_rows
-    @rows = @contents
+  def rows
+    rows = contents
   end
 
-  def update_columns
-    @columns = (0..6).map {|i|(0..5).map {|j| contents[j][i]}}
+  def columns
+    columns = (0..6).map {|i|(0..5).map {|j| contents[j][i]}}
   end
 
-  def update_diagonals
-    @diagonals = []
-    update_diagonals_top_left_to_bottom_right
-    update_diagonals_bottom_left_to_top_right
+  def diagonals
+    diagonals_top_left_to_bottom_right + diagonals_bottom_left_to_top_right
   end
 
-  def update_diagonals_top_left_to_bottom_right
-    #diagonals = []
+  def diagonals_top_left_to_bottom_right
+    diagonals = []
     starting_cells = [[0,3],[0,2],[0,1],[0,0],[1,0],[2,0]]
     starting_cells.each do |cell|
       current_diagonals = []
@@ -112,11 +110,13 @@ class Board
         row += 1
         col += 1
       end
-      @diagonals << current_diagonals
+      diagonals << current_diagonals
     end
+    diagonals
   end
 
-  def update_diagonals_bottom_left_to_top_right
+  def diagonals_bottom_left_to_top_right
+    diagonals = []
     starting_cells = [[3,0],[4,0],[5,0],[5,1],[5,2],[5,3]]
     starting_cells.each do |cell|
       current_diagonals = []
@@ -127,8 +127,9 @@ class Board
         row -= 1
         col += 1
       end
-      @diagonals << current_diagonals
+      diagonals << current_diagonals
     end
+    diagonals
   end
 
 end
