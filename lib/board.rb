@@ -34,12 +34,25 @@ class Board
     end
   end
 
-  def legal_move?(col)
-    col = Integer col rescue false
-    return false if !(0..6).include?(col)
-    whole_col = (0..5).map {|row| @contents[row][col]}
-    return false if whole_col.none? {|cell| cell.value == " "}
+  def legal_move?(column)
+    column = convert_to_integer(column) rescue false
+    return false if !column_exists?(column)
+    return false if !contains_empty_cell?(column)
     true
+  end
+
+  def contains_empty_cell?(column)
+    column_contents = (0..5).map {|row| @contents[row][column]}
+    return false if column_contents.none? {|cell| cell.value == " "}
+    true
+  end
+
+  def column_exists?(column)
+    return false if !(0..6).include?(column)
+  end
+
+  def convert_to_integer(input)
+    Integer input
   end
 
   def four_in_a_row?(arr)
