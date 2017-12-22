@@ -26,7 +26,7 @@ describe Board do
         4.times {board.place_move(6, "X")}
       end
       it 'returns true' do
-        expect(board.legal_move?(6))
+        expect(board.legal_move?(6)).to eq(true)
       end
     end
     context 'passed a full column' do
@@ -97,6 +97,24 @@ describe Board do
       it 'returns 7 elements per row' do
         expect(board.rows[5].length).to eq(7)
       end
+    end
+
+    describe '#contains_empty_cell' do
+      context 'passed an empty column' do
+        it 'returns true' do
+          expect(board.contains_empty_cell?(5)).to eq(true)
+        end
+      end
+
+    end
+
+    describe '#convert_to_integer()' do
+      context 'passed a string number ("6")' do
+        it 'returns a Fixnum' do
+          expect(board.convert_to_integer("6")).to eq(6)
+        end
+      end
+
     end
 
     describe '#four_in_a_row?' do
