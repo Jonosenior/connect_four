@@ -74,9 +74,6 @@ describe Board do
     end
 
     describe '#columns' do
-      before do
-        board.update_columns
-      end
       it 'returns all 7 cols' do
         expect(board.columns.length).to eq(7)
       end
@@ -87,9 +84,6 @@ describe Board do
     end
 
     describe '#rows' do
-      before do
-        board.update_rows
-      end
       it 'returns all 6 rows' do
         expect(board.rows.length).to eq(6)
       end
