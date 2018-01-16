@@ -1,6 +1,6 @@
-require_relative 'announcer'
-require_relative 'board'
-require_relative 'player'
+require_relative 'lib/announcer'
+require_relative 'lib/board'
+require_relative 'lib/player'
 
 def start_game
   @announcer = Announcer.new
@@ -29,10 +29,6 @@ def new_turn
 end
 
 def analyse_turn
-  # @board.update_rows
-  # @board.update_columns
-  # @board.update_diagonals
-  # @board.update_lines_to_check
   game_over if @board.win? || @board.tie?
 end
 

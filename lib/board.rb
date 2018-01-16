@@ -133,39 +133,3 @@ class Board
   end
 
 end
-
- # @board = Board.new
- # @board.visualise
- # (0..5).each do |col|
- #   6.times {@board.place_move(col, "X")}
- # end
- # @board.visualise
- # puts @board.update_columns
- # puts @board.columns[6].length
-# # 6.times {@board.place_move(5,"O")}
-# @board.visualise
-# @board.update_rows
-# @board.update_columns
-# @board.update_diagonals
-# @board.update_lines_to_check
-# puts @board.tie?
-# #@board.columns.each {|col| puts @board.four_in_a_row?(col)}
-# col = (0..5).map {|i| @board.contents[i][5]}
-# col.each {|element| puts element.value}
-# puts @board.four_in_a_row?(col)
-
-# @board.columns.each {|a| a.each_with_index {|b,i| puts "#{b.value},#{i}"}}
-# @board.columns[4].each {|a| puts a.value}
-# puts @board.four_in_a_row?(@board.columns[4])
-# #@board.columns.each {|col| puts @board.four_in_a_row?(col)}
-# puts @board.win?
-# 6.times {@board.place_move(4, "X")}
-# @board.visualise
-# puts @board.legal_move?(4)
-# @board.place_move(3, "X")
-# @board.visualise
-# @board.place_move(3, "X")
-# @board.visualise
-# puts @board.contents[5][3].value
-# puts @board.contents[4][3].value
-# puts @board.contents[3][3].value
