@@ -4,7 +4,7 @@ This is a terminal game of Connect Four for two players, written in Ruby to prac
 
 It's a project from [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/testing-your-ruby-code).
 
-![Screenshot](images/connect_four_opening.png)
+![Screenshot](images/connect_four_opening2.png)
 
 ## Installation
 
